@@ -2,7 +2,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import Navigation from '../Navigation/Navigation'
-export default class ProfilePage extends React.Component {
+export default class Bio extends React.Component {
   constructor(props){
   super(props);
 }
@@ -11,7 +11,7 @@ export default class ProfilePage extends React.Component {
     return(
       <div>
         <Navigation/>
-        <h1>Home Sweet Home</h1>
+        <h1>Profile Page</h1>
       </div>
     );
   }
