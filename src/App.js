@@ -21,7 +21,6 @@ class App extends React.Component {
               <Route path = '/snake' exact component = {Slither}/>
               <Route path = "/tetris" exact component={Tetris}/>
               <Route path = "/sudoku" exact component={Sudoku}/>
-              <Route path = "/dropdown" exact component={Nav}/>
           </div>
         </BrowserRouter>
       </div>

@@ -16,8 +16,6 @@ const DropdownExamplePointing = () => (
           <Dropdown.Menu>
             <Dropdown.Item>List Item</Dropdown.Item>
             <Dropdown.Item>List Item</Dropdown.Item>
-            <Dropdown.Divider />
-            <Dropdown.Header>Header Item</Dropdown.Header>
             <Dropdown.Item>
               <i className='dropdown icon' />
               <span className='text'>Submenu</span>
