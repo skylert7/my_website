@@ -153,6 +153,12 @@ main {
   font-style: italic;
 }
 
+/* interests and hobbies */
+.interests{
+  margin: 0;
+  column-count: 2;
+}
+
 /*<!-- Awards -->*/
 .awards {
   height: 200px;
