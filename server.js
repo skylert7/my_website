@@ -6,7 +6,7 @@ app.use(cors());
 var cors = require('cors');
 
 
-/*
+
 var bodyParser = require('body-parser');
 
 
@@ -20,7 +20,7 @@ var sess = {
 	resave: true,
 	saveUninitialized: true,
 	cookie  : { maxAge  :  86400 * 1000}
-}*/
+}
 app.use(express.static(__dirname + '/public'));
 
 //------------------------------------------------------------------------ Homepage -----------------------------------------------------------------------
