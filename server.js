@@ -1,8 +1,10 @@
 var express = require('express');
+var app = express();
 var path = require('path');
+/*
 var cors = require('cors');
 var bodyParser = require('body-parser');
-var app = express();
+
 
 process.env.SECRET_KEY = 'secret'
 const port = process.env.PORT || 4000;
@@ -15,7 +17,7 @@ var sess = {
 	resave: true,
 	saveUninitialized: true,
 	cookie  : { maxAge  :  86400 * 1000}
-}
+}*/
 app.use(express.static(__dirname + '/public'));
 
 //------------------------------------------------------------------------ Homepage -----------------------------------------------------------------------
