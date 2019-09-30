@@ -1,16 +1,19 @@
 var express = require('express');
 var app = express();
 var path = require('path');
-/*
+const port = process.env.PORT || 4000;
+app.use(cors());
 var cors = require('cors');
+
+
+/*
 var bodyParser = require('body-parser');
 
 
 process.env.SECRET_KEY = 'secret'
-const port = process.env.PORT || 4000;
 
 app.use(bodyParser.json());
-app.use(cors());
+
 app.use(bodyParser.urlencoded({ extended: false }));
 var sess = {
 	secret: 'secret',
