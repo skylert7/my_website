@@ -6,7 +6,7 @@ import Slither from './slither/Slither';
 import Sudoku from './sudoku/Sudoku';
 import Tetris from './tetris/Tetris';
 import Nav from './Navigation/Nav'
-var faker = require('faker');
+// var faker = require('faker');
 
 
 class App extends React.Component {
