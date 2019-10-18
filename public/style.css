@@ -2,6 +2,7 @@
 
 * {
   box-sizing: border-box;
+  font-family: 'Merriweather';
 }
 
 a {
@@ -37,6 +38,7 @@ body {
 }
 
 .title {
+  font-family: 'Lobster';
   color: white;
   position: relative;
   padding-bottom: 75%;
@@ -79,6 +81,7 @@ main {
 }
 
 .bio h1 {
+  font-family: 'Lobster';
   margin: 0;
 }
 
