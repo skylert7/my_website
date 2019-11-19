@@ -2,10 +2,33 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import Navigation from '../Navigation/Navigation'
+import RouteToBackend from '../api/RouteToBackend'
 export default class Home extends React.Component {
+  routeToBackend = new RouteToBackend();
   constructor(props){
   super(props);
+
+  this.state: {
+    name: "",
+    reVisit: "",
+    score: "",
+    extraComment: "",
+
+  }
+  this.handleSubmit = this.handleSubmit.bind(this);
 }
+
+  handleSubmit(){
+
+    content = {
+      name: this.state.name,
+      reVisit: this.state.reVisit,
+      score: this.state.score,
+      extraComment: this.state.extraComment
+    }
+
+    this.routeToBackend.sendEmail(content)
+  }
 
   render() {
     return(
@@ -196,7 +219,13 @@ export default class Home extends React.Component {
               <div class="form-field">
                 <div>
                   <label class="label-block" for="commenter">Name</label>
-                  <input type="text" name="commenter" id="commenter" />
+                  <input
+                  type="text"
+                  name="commenter"
+                  id="commenter"
+                  value={this.state.name}
+                  onChange={event => {this.setState({name: event.target.value})}}
+                  />
                   <br/>
                 </div>
 
@@ -246,18 +275,33 @@ export default class Home extends React.Component {
                 </div>
                 <div>
                   <label for="reVisit">Will you revisit this page?</label>
-                  <select name="yes_no" id="yes_no">
+                  <select
+                  name="yes_no"
+                  id="yes_no"
+                  value={this.state.reVisit}
+                  onChange={event => this.setState({reVisit: event.target.value})}
+                  >
                     <option></option>
-                    <option>Yes</option>
-                    <option>No</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
                   </select>
                 </div>
 
                 <div class="leaveComment">
                   <label class="label-block" for="extraComment">Extra Comment</label>
-                  <textarea rows="4" type="text" name="extraComment" id="extraComment"></textarea>
+                  <textarea
+                  rows="4"
+                  type="text"
+                  name="extraComment"
+                  id="extraComment"
+                  value={this.state.extraComment}
+                  onChange={event => this.setState({extraComment: event.target.value})}
+                  ></textarea>
                 </div>
-                <button id="button">Submit Comment</button>
+                <button
+                id="button"
+                onSubmit={this.handleSubmit}
+                >Submit Comment</button>
               </div>
             </form>
           </section>
