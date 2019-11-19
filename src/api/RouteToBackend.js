@@ -18,4 +18,4 @@ class RouteToBackend {
 
 }
 
-export default UserFunctions;
+export default RouteToBackend;
