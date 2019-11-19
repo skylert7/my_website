@@ -12,7 +12,7 @@ export default class Home extends React.Component {
     name: "",
     reVisit: "",
     score: "",
-    extraComment: "",
+    extraComment: ""
 
   }
   this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,7 +27,7 @@ export default class Home extends React.Component {
       extraComment: this.state.extraComment
     }
 
-    this.routeToBackend.sendEmail(content)
+    this.routeToBackend.sendEmail(content);
   }
 
   render() {
