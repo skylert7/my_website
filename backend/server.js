@@ -21,13 +21,7 @@ var sess = {
 	saveUninitialized: true,
 	cookie  : { maxAge  :  86400 * 1000}
 }
-app.use(express.static(__dirname + '/public'));
 
-//------------------------------------------------------------------------ Homepage -----------------------------------------------------------------------
-
-app.get('/', function (req, res) {
-	res.sendFile(path.join(__dirname, './public', 'index.html'));
-});
 
 //---------------------------------------------------------------------------------
 app.listen(port, () => {
