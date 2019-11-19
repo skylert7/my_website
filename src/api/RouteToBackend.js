@@ -8,8 +8,6 @@ class RouteToBackend {
         return new Promise((resolve, reject) => {
             return axios.post(
               this.URL + '/sendEmail/',
-            { example: content },
-            { headers: { 'Content-Type': 'application/json' }
           )
                 .then(resp => {
                   // console.log(resp.data);
