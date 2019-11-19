@@ -20,7 +20,7 @@ export default class Home extends React.Component {
 
   handleSubmit(){
 
-    content = {
+    const content = {
       name: this.state.name,
       reVisit: this.state.reVisit,
       score: this.state.score,
