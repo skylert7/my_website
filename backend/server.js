@@ -3,7 +3,8 @@ var app = express();
 var path = require('path');
 var cors = require('cors');
 var nodemailer = require('nodemailer');
-
+const https = require('https');
+const fs = require('fs');
 
 app.use(cors());
 
@@ -33,16 +34,20 @@ app.get('/', (req, res) => {
 
 //--------------------- Send email --------------------------
 
-app.post('/sendEmail', (req, res) => {
+app.get('/sendEmail', (req, res) => {
 	console.log(req.body)
 	console.log(req.params)
-  var transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: 'skyler.linhtran@gmail.com',
-      pass: 'skyler1996'
-    }
-  });
+	let transporter = nodemailer.createTransport({
+	    host: 'smtp.gmail.com',
+	    port: 587,
+	    secure: false,
+	    requireTLS: true,
+	    auth: {
+	        user: 'skyler.linhtran@gmail.com',
+	        pass: 'skyler1996'
+	    }
+	});
+
 
   var mailOptions = {
     from: 'skyler.linhtran@gmail.com',
@@ -60,13 +65,18 @@ app.post('/sendEmail', (req, res) => {
   });
 });
 
-
 //---------------------------------------------------------------------------------
-app.listen(config.port, config.host, (e) => {
-  if (e) {
-    throw new Error('Internal Server Error');
-  }
-	else{
-		console.log('Server running on port ', config.port)
-	}
-});
+https.createServer({
+	key: fs.readFileSync('./ssl_for_my_website/private.key'),
+	cert: fs.readFileSync('./ssl_for_my_website/certificate.crt'),
+	ca: fs.readFileSync('./ssl_for_my_website/ca_bundle.crt')
+},app).listen(config.port, config.host);
+
+// app.listen(config.port, config.host, (e) => {
+//   if (e) {
+//     throw new Error('Internal Server Error');
+//   }
+// 	else{
+// 		console.log('Server running on port ', config.port)
+// 	}
+// });
