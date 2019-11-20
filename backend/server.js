@@ -40,9 +40,9 @@ app.post('/sendEmail', (req, res) => {
 
   var mailOptions = {
     from: 'skyler.linhtran@gmail.com',
-    to: 'skylert',
-    subject: 'Sending to local authorities from node',
-    text: 'Please see this message'
+    to: 'skylert@smu.edu',
+    subject: 'Someone send you a comment on your website',
+    text: req.body
   };
 
   transporter.sendMail(mailOptions, function(error, info){

@@ -27,6 +27,13 @@ export default class Home extends React.Component {
       extraComment: this.state.extraComment
     }
 
+    this.setState({
+      name: "",
+      reVisit: "",
+      score: "",
+      extraComment: ""
+    })
+
     this.routeToBackend.sendEmail(content);
   }
 
@@ -300,7 +307,8 @@ export default class Home extends React.Component {
                 </div>
                 <button
                 id="button"
-                onSubmit={this.handleSubmit}
+                type="button"
+                onClick={this.handleSubmit}
                 >Submit Comment</button>
               </div>
             </form>

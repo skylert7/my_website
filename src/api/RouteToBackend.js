@@ -7,7 +7,7 @@ class RouteToBackend {
     sendEmail(content){
         return new Promise((resolve, reject) => {
             return axios.post(
-              this.URL + '/sendEmail/',
+              this.URL + '/sendEmail/', content
           )
                 .then(resp => {
                   // console.log(resp.data);
