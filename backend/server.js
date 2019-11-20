@@ -34,7 +34,7 @@ app.get('/', (req, res) => {
 
 //--------------------- Send email --------------------------
 
-app.get('/sendEmail', (req, res) => {
+app.post('/sendEmail', (req, res) => {
 	console.log(req.body)
 	console.log(req.params)
 	let transporter = nodemailer.createTransport({
