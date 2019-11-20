@@ -1,7 +1,6 @@
 var express = require('express');
 var app = express();
 var path = require('path');
-const port = process.env.PORT || 4000;
 var cors = require('cors');
 var nodemailer = require('nodemailer');
 
@@ -22,6 +21,11 @@ var sess = {
 	saveUninitialized: true,
 	cookie  : { maxAge  :  86400 * 1000}
 }
+
+const config = {
+  port: 4000,
+  host: '0.0.0.0'
+};
 
 app.get('/', (req, res) => {
   res.status(200).send('Connected');
@@ -58,6 +62,11 @@ app.post('/sendEmail', (req, res) => {
 
 
 //---------------------------------------------------------------------------------
-app.listen(port, () => {
-	console.log("Server is running on port: " + port)
-})
+app.listen(config.port, config.host, (e) => {
+  if (e) {
+    throw new Error('Internal Server Error');
+  }
+	else{
+		console.log('Server running on port ', config.port)
+	}
+});
