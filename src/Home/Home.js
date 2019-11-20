@@ -13,7 +13,6 @@ export default class Home extends React.Component {
     reVisit: "",
     score: "",
     extraComment: ""
-
   }
   this.handleSubmit = this.handleSubmit.bind(this);
 }
@@ -236,50 +235,23 @@ export default class Home extends React.Component {
                   <br/>
                 </div>
 
+                <label for="rate">How do you rate this biography page?</label>
                 <div>
-                  <label for="rate">How do you rate this biography page?</label>
-                  <div class="radio">
-                    <label for="1">
-                      <input type="radio" name="chooseOne" id="1" /> 1
-                    </label>
-
-                    <label for="2">
-                      <input type="radio" name="chooseOne" id="2" /> 2
-                    </label>
-
-                    <label for="3">
-                      <input type="radio" name="chooseOne" id="3" /> 3
-                    </label>
-
-                    <label for="4">
-                      <input type="radio" name="chooseOne" id="4" /> 4
-                    </label>
-
-                    <label for="5">
-                      <input type="radio" name="chooseOne" id="5" /> 5
-                    </label>
-
-                    <label for="6">
-                      <input type="radio" name="chooseOne" id="6" /> 6
-                    </label>
-
-                    <label for="7">
-                      <input type="radio" name="chooseOne" id="7" /> 7
-                    </label>
-
-                    <label for="8">
-                      <input type="radio" name="chooseOne" id="8" /> 8
-                    </label>
-
-                    <label for="9">
-                      <input type="radio" name="chooseOne" id="9" /> 9
-                    </label>
-
-                    <label for="10">
-                      <input type="radio" name="chooseOne" id="10" /> 10
-                    </label>
-                  </div>
+                {
+                  [1,2,3,4,5,6,7,8,9,10].map(x => (
+                      <label for={x}>
+                        <input
+                        type="radio"
+                        name="chooseOne"
+                        id="rate"
+                        value={x}
+                        onChange={event => this.setState({score: event.target.value})}/> {x}
+                      </label>
+                  )
+                )
+                }
                 </div>
+
                 <div>
                   <label for="reVisit">Will you revisit this page?</label>
                   <select

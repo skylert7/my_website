@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 class RouteToBackend {
-  URL = "http://skylerlt.com:4000";
+  URL = "http://127.0.0.1:4000";
   // URL = "http://127.0.0.1:8000"; //localhost
 
     sendEmail(content){

@@ -30,6 +30,8 @@ app.get('/', (req, res) => {
 //--------------------- Send email --------------------------
 
 app.post('/sendEmail', (req, res) => {
+	console.log(req.body)
+	console.log(req.params)
   var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -41,8 +43,8 @@ app.post('/sendEmail', (req, res) => {
   var mailOptions = {
     from: 'skyler.linhtran@gmail.com',
     to: 'skylert@smu.edu',
-    subject: 'Someone send you a comment on your website',
-    text: req.body
+    subject: 'Someone sent you a comment on your website',
+    text: JSON.stringify(req.body)
   };
 
   transporter.sendMail(mailOptions, function(error, info){
