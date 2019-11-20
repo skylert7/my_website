@@ -23,22 +23,26 @@ var sess = {
 	cookie  : { maxAge  :  86400 * 1000}
 }
 
+app.get('/', (req, res) => {
+  res.status(200).send('Connected');
+});
+
 //--------------------- Send email --------------------------
 
 app.post('/sendEmail', (req, res) => {
   var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'skyler_linhtran@gmail.com',
+      user: 'skyler.linhtran@gmail.com',
       pass: 'skyler1996'
     }
   });
 
   var mailOptions = {
-    from: 'skyler_linhtran@gmail.com',
-    to: 'skylert@smu.edu',
+    from: 'skyler.linhtran@gmail.com',
+    to: 'skylert',
     subject: 'Sending to local authorities from node',
-    text: 'That was easy!'
+    text: 'Please see this message'
   };
 
   transporter.sendMail(mailOptions, function(error, info){
