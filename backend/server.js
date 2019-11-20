@@ -46,15 +46,26 @@ app.post('/sendEmail', (req, res) => {
 	        user: 'skyler.linhtran@gmail.com',
 	        pass: 'skyler1996'
 	    }
+			// auth: {
+			// 	user: 'electionbuddy.fa2019@gmail.com',
+			// 	pass: 'electionbuddy2019'
+			// }
 	});
 
 
-  var mailOptions = {
-    from: '"Skyler Tran" <skyler.linhtran@gmail.com>',
-    to: 'skylert@smu.edu',
-    subject: 'Someone sent you a comment on your website',
-    text: JSON.stringify(req.body)
-  };
+  // var mailOptions = {
+  //   from: `${JSON.stringify(req.body.sender)} <electionbuddy.fa2019@gmail.com>`,
+  //   to: 'mfonten@lyle.smu.edu',
+  //   subject: `${JSON.stringify(req.body.sender)} + from Election Buddy Sent You A Messsage`,
+  //   text: JSON.stringify(req.body.content)
+  // };
+
+	var mailOptions = {
+	  from: '"Skyler Tran" <skyler.linhtran@gmail.com>',
+	  to: 'skylert@smu.edu',
+	  subject: 'Someone Sent You A Comment On Your Website',
+	  text: JSON.stringify(req.body)
+	};
 
   transporter.sendMail(mailOptions, function(error, info){
     if (error) {

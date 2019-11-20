@@ -40,10 +40,10 @@ export default class Home extends React.Component {
     return(
       <div>
         <header>
-          <section class="navBar">
-            <div class="title">
+          <section className="navBar">
+            <div className="title">
               <h2>Skyler Tran</h2>Designed for GUI Fall 2019</div>
-            <div class="link">
+            <div className="link">
               <div><a href="#bio">Biography</a></div>
               <div><a href="#grades">Academic Records</a></div>
               <div><a href="#contact">Contact Me</a></div>
@@ -53,11 +53,11 @@ export default class Home extends React.Component {
 
         <main>
 
-          <section class="background-img">
+          <section className="background-img">
             <div><img src="https://i.ibb.co/7SnFG31/file-14.jpg" alt="Image here" /></div>
           </section>
 
-          <section class="bio" id="bio">
+          <section className="bio" id="bio">
             <h1>Skyler Tran</h1>
             <article>My name is Skyler Tran and I am currently a senior in Computer Science department. I have taken Database class and I am
               taking User interface this semester in order to become a full-stack developer. I am also passionate about cyber security and
@@ -66,9 +66,9 @@ export default class Home extends React.Component {
               for Red Team in the upcoming Cyber Force Competition by Department of Energy.
             </article>
           </section>
-          <div class="clear"></div>
+          <div className="clear"></div>
 
-          <section class="favBooks">
+          <section className="favBooks">
             <h2>Favorite Books</h2>
             <ul>
               <li>Great Gatsby - <span id="author">F. Scott Fitzgerald</span></li>
@@ -77,13 +77,13 @@ export default class Home extends React.Component {
             </ul>
           </section>
 
-          <div class="bookImages">
-            <img class="z-0" src="https://i.ibb.co/vcRYYjF/great-gastby.jpg" alt="great-gastby"/>
-            <img class="z-1" src="https://i.ibb.co/syFQ6gy/dorian-gray.jpg" alt="dorian-gray"/>
-            <img class="z-2" src="https://i.ibb.co/w76tsN9/looking-for-alaska.jpg" alt="looking-for-alaska"/>
+          <div className="bookImages">
+            <img className="z-0" src="https://i.ibb.co/vcRYYjF/great-gastby.jpg" alt="great-gastby"/>
+            <img className="z-1" src="https://i.ibb.co/syFQ6gy/dorian-gray.jpg" alt="dorian-gray"/>
+            <img className="z-2" src="https://i.ibb.co/w76tsN9/looking-for-alaska.jpg" alt="looking-for-alaska"/>
           </div>
 
-          <section class="favQuotes">
+          <section className="favQuotes">
             <h2>Favorite Quotes</h2>
             <div>
               <p>"The person, be it gentleman or lady, who has not pleasure in a good novel, must be intolerably stupid."</p>
@@ -97,7 +97,7 @@ export default class Home extends React.Component {
           </section>
 
           <h2>Interests + Hobbies</h2>
-          <section class="interests">
+          <section className="interests">
             <ul>
               <li>Technology</li>
               <li>Programming</li>
@@ -111,37 +111,37 @@ export default class Home extends React.Component {
             </ul>
           </section>
 
-          <section class="awards">
+          <section className="awards">
             <h2>Awards</h2>
-            <div class="awards-item">
+            <div className="awards-item">
               <p>Local 1st Place in Cyber Force Competition</p>
-              <p class="sponsor">Department of Energy (DOE)</p>
+              <p className="sponsor">Department of Energy (DOE)</p>
             </div>
 
-            <div class="awards-item">
+            <div className="awards-item">
               <p>2nd place in cyber competition - Capture The Flag</p>
-              <p class="sponsor">StateFarm</p>
+              <p className="sponsor">StateFarm</p>
             </div>
 
-            <div class="awards-item">
+            <div className="awards-item">
               <p>Honor Transfer Scholarship</p>
-              <p class="sponsor">Southern Methodist University</p>
+              <p className="sponsor">Southern Methodist University</p>
             </div>
 
-            <div class="awards-item">
+            <div className="awards-item">
               <p>Honor Roll Distinction</p>
-              <p class="sponsor">Southern Methodist University</p>
+              <p className="sponsor">Southern Methodist University</p>
             </div>
 
-            <div class="awards-item">
+            <div className="awards-item">
               <p>3rd place in Calculus Bowl</p>
-              <p class="sponsor">The University of Texas at Arlington</p>
+              <p className="sponsor">The University of Texas at Arlington</p>
             </div>
           </section>
 
           <hr />
 
-          <section class="gradeTable" id="grades">
+          <section className="gradeTable" id="grades">
             <h1>Academic Records</h1>
             <table id="gradeTable">
               <thead>
@@ -208,7 +208,7 @@ export default class Home extends React.Component {
           <hr/>
 
 
-          <section class="contactMe" id="contact">
+          <section className="contactMe" id="contact">
             <h4>Get in touch today</h4>
             <hr/>
             <article id="bold">Southern Methodist University</article>
@@ -219,12 +219,12 @@ export default class Home extends React.Component {
 
           <br/>
           <hr/>
-          <section id="comment" class="form-field">
+          <section id="comment" className="form-field">
             <h2>Leave Your Comment</h2>
             <form id="leaveComment" name="leaveComment">
-              <div class="form-field">
+              <div className="form-field">
                 <div>
-                  <label class="label-block" for="commenter">Name</label>
+                  <label className="label-block"htmlFor="commenter">Name</label>
                   <input
                   type="text"
                   name="commenter"
@@ -235,17 +235,19 @@ export default class Home extends React.Component {
                   <br/>
                 </div>
 
-                <label for="rate">How do you rate this biography page?</label>
+                <label htmlFor="rate">How do you rate this biography page?</label>
                 <div>
                 {
                   [1,2,3,4,5,6,7,8,9,10].map(x => (
-                      <label for={x}>
+                      <label htmlFor={x}>
                         <input
                         type="radio"
                         name="chooseOne"
+                        checked={this.state.score == `${x}`}
+                        value-for-radio={x}
                         id="rate"
-                        value={x}
-                        onChange={event => this.setState({score: event.target.value})}/> {x}
+                        value={this.state.score}
+                        onChange={event => this.setState({score: event.target.attributes.getNamedItem('value-for-radio').value})}/> {x}
                       </label>
                   )
                 )
@@ -253,7 +255,7 @@ export default class Home extends React.Component {
                 </div>
 
                 <div>
-                  <label for="reVisit">Will you revisit this page?</label>
+                  <label htmlFor="reVisit">Will you revisit this page?</label>
                   <select
                   name="yes_no"
                   id="yes_no"
@@ -266,8 +268,8 @@ export default class Home extends React.Component {
                   </select>
                 </div>
 
-                <div class="leaveComment">
-                  <label class="label-block" for="extraComment">Extra Comment</label>
+                <div className="leaveComment">
+                  <label className="label-block" htmlFor="extraComment">Extra Comment</label>
                   <textarea
                   rows="4"
                   type="text"
@@ -277,19 +279,19 @@ export default class Home extends React.Component {
                   onChange={event => this.setState({extraComment: event.target.value})}
                   ></textarea>
                 </div>
-                <button
-                id="button"
-                type="button"
-                onClick={this.handleSubmit}
-                >Submit Comment</button>
               </div>
+              <button
+              id="button"
+              type="button"
+              onClick={this.handleSubmit}
+              >Submit Comment</button>
             </form>
           </section>
           <br/>
 
         </main>
 
-        <footer class="footer">
+        <footer className="footer">
           <h5>Created by Skyler Tran. Powered by Plunker v1.23.1</h5>
         </footer>
       </div>
