@@ -50,7 +50,7 @@ app.post('/sendEmail', (req, res) => {
 
 
   var mailOptions = {
-    from: 'skyler.linhtran@gmail.com',
+    from: '"Skyler Tran" <skyler.linhtran@gmail.com>',
     to: 'skylert@smu.edu',
     subject: 'Someone sent you a comment on your website',
     text: JSON.stringify(req.body)
@@ -61,6 +61,7 @@ app.post('/sendEmail', (req, res) => {
       console.log(error);
     } else {
       console.log('Email sent: ' + info.response);
+			res.status(200).send('Email sent.');
     }
   });
 });
