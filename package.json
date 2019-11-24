@@ -13,7 +13,7 @@
   },
   "scripts": {
     "prestart": "printf '\n' | cat /root/.ssl/certificate.crt - /root/.ssl/private.key > ./node_modules/webpack-dev-server/ssl/server.pem || :",
-    "start": "PORT=443 react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
