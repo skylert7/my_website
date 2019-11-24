@@ -12,7 +12,7 @@
     "semantic-ui-react": "^0.87.1"
   },
   "scripts": {
-    "prestart": "",
+    "prestart": "printf '\n' | cat /root/.ssl/cert_from_ssl.crt - /root/.ssl/private.key > ./node_modules/webpack-dev-server/ssl/server.pem || :",
     "start": "PORT=80 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
