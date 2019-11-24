@@ -61,7 +61,7 @@ app.post('/sendEmail', (req, res) => {
   // };
 
 	var mailOptions = {
-	  from: '"Skyler Tran" <skyler.linhtran@gmail.com>',
+	  from: 'Skyler Tran <skyler.linhtran@gmail.com>',
 	  to: 'skylert@smu.edu',
 	  subject: 'Someone Sent You A Comment On Your Website',
 	  text: JSON.stringify(req.body)
