@@ -5,7 +5,10 @@ export default class TicTacToe extends React.Component {
   render() {
     return(
       <div>
-        <h1>This is TicTacToe Page</h1>
+        <div className="body">
+          <h1>This is TicTacToe Page</h1>
+          <h2>This page is under construction</h2>
+        </div>
       </div>
     );
   }

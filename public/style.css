@@ -5,6 +5,10 @@
   font-family: 'Merriweather';
 }
 
+html {
+  margin: 0;
+}
+
 a {
   text-decoration: none;
 }
@@ -41,7 +45,7 @@ body {
   font-family: 'Lobster';
   color: white;
   position: relative;
-  padding-bottom: 75%;
+  padding-bottom: 25%;
 }
 
 .title h2 {
@@ -71,6 +75,14 @@ main {
   /* Same as the width of the navBar */
 }
 
+/* body for game page */
+.body {
+  min-height: calc(100vh - .5em);
+  max-width: 900px;
+  padding: 20px;
+  margin-left: 200px;
+  /* Same as the width of the navBar */
+}
 
 /*Introduction*/
 .background-img img {
@@ -283,7 +295,7 @@ label.label-block {
 }
 
 
-/*<!-- Footer -->*/
+/*<!-- Footer --> need to fix this*/
 .footer {
   margin-left: 100px;
   width: 100%;

@@ -4,8 +4,8 @@ import Bio from './Bio/Bio';
 import Slither from './slither/Slither';
 import Sudoku from './sudoku/Sudoku';
 import Tetris from './tetris/Tetris';
-import Nav from './Navigation/Nav';
 import TicTacToe from './TicTacToe/TicTacToe';
+import Navigation from './Navigation/Navigation';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 // var faker = require('faker');
@@ -15,6 +15,7 @@ class App extends React.Component {
   render(){
     return (
       <Router>
+      <Navigation/>
         <Switch>
           <Route exact path="/" exact component={Home}/>
           <Route exact path="/tetris" exact component={Tetris}/>
@@ -22,7 +23,11 @@ class App extends React.Component {
           <Route exact path="/slither" exact component={Slither}/>
           <Route exact path="/tictactoe" exact component={TicTacToe}/>
         </Switch>
+        <footer className="footer">
+          <h5>Created by Skyler Tran. Powered by Plunker v1.23.1</h5>
+        </footer>
       </Router>
+
     )
   }
 }

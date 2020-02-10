@@ -40,31 +40,17 @@ export default class Home extends React.Component {
   render() {
     return(
       <div>
-        <header>
-          <section className="navBar">
-            <div className="title">
-              <h2>Skyler Tran</h2>Designed for GUI Fall 2019</div>
-            <div className="link">
-              <div><a href="#bio">Biography</a></div>
-              <div><a href="#grades">Academic Records</a></div>
-              <div><a href="#contact">Contact Me</a></div>
-            </div>
-          </section>
-        </header>
-
         <main>
-
           <section className="background-img">
             <div><img src="https://i.ibb.co/7SnFG31/file-14.jpg" alt="Image here" /></div>
           </section>
 
           <section className="bio" id="bio">
             <h1>Skyler Tran</h1>
-            <article>My name is Skyler Tran and I am currently a senior in Computer Science department. I have taken Database class and I am
-              taking User interface this semester in order to become a full-stack developer. I am also passionate about cyber security and
-              virtual reality. I used to be an officer in Cyber Security club here at SMU and I am currently a pro-active member
-              of Virtual Reality club that is currently working on Dance Dance Revolution simulation. My current goal is to be selected as a volunteer
-              for Red Team in the upcoming Cyber Force Competition by Department of Energy.
+            <article>My name is Skyler Tran and I am currently a senior in Computer Science department. I am currently taking Artificial
+             Intelligence and Machine Learning classes. I am also passionate about cyber security and virtual reality.
+             I used to be an officer in Cyber Security club here at SMU and I am currently a pro-active member
+              of Virtual Reality club. My current goal is to get a job where I can help build software/hardward and start coding after I graduate.
             </article>
           </section>
           <div className="clear"></div>
@@ -289,12 +275,7 @@ export default class Home extends React.Component {
             </form>
           </section>
           <br/>
-
         </main>
-
-        <footer className="footer">
-          <h5>Created by Skyler Tran. Powered by Plunker v1.23.1</h5>
-        </footer>
       </div>
     );
   }
