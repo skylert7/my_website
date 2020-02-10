@@ -18,6 +18,7 @@ export default class Home extends React.Component {
 }
 
   handleSubmit(){
+    alert("Thank you! Your comment has been received to improve my website.")
 
     const content = {
       name: this.state.name,
