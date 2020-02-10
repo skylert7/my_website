@@ -10,7 +10,6 @@ export default class Bio extends React.Component {
   render() {
     return(
       <div>
-        <Navigation/>
         <h1>Profile Page</h1>
       </div>
     );
