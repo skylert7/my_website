@@ -268,7 +268,7 @@ export default class Home extends React.Component {
                 </div>
               </div>
               <button
-              id="button"
+              id="button-customized"
               type="button"
               onClick={this.handleSubmit}
               >Submit Comment</button>

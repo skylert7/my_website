@@ -1,0 +1,37 @@
+.whiteChar {
+  color: red;
+}
+
+table.tttBoard{
+  width: calc(60vh);
+  height: calc(60vh);
+  background-color: grey;
+  margin-left: auto;
+  border-collapse: collapse;
+  border: 0.5vh solid black;
+  /* display: grid;
+  grid-template-columns: 20px 120px 120px 120px 120px 20px;
+  grid-template-rows: 20px 120px 120px 120px 120px 20px;
+  justify-content: center; */
+}
+
+table.tttBoard > tbody > tr > td{
+  text-align: center;
+  border: 0.5vh solid black;
+}
+
+.tttBoardTitle{
+  width: calc(60vh);
+  margin-left: auto;
+  align-self: center;
+}
+
+.board-button{
+  margin-top: 1em;
+  margin-left: calc(60vh); /*Stay in the middle of the board*/
+}
+
+.box {
+  background-color: #d9d9d9;
+  border: 2px solid black;
+}
