@@ -78,7 +78,13 @@ app.post('/sendEmail', (req, res) => {
 });
 
 //-------------------------- TicTacToe --------------------------
-
+app.post('/tttSendMove', (req, res) => {
+	let board = req.body.board
+	let move = req.body.move
+	board[move] = 1
+	let toReturn = {board: board}
+	res.send(toReturn)
+})
 
 //---------------------------------------------------------------------------------
 https.createServer({

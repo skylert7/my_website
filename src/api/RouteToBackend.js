@@ -2,7 +2,7 @@ import axios from 'axios';
 
 class RouteToBackend {
   URL = "https://localhost:4000";
-  // URL = "http://127.0.0.1:8000"; //localhost
+  // URL = "https://skylerlt.com:4000";
 
     sendEmail(content){
         return new Promise((resolve, reject) => {
@@ -21,6 +21,18 @@ class RouteToBackend {
       return new Promise((resolve, reject) => {
           return axios.post(
             this.URL + '/tttSendMove/', boardAndMove
+        )
+              .then(resp => {
+                // console.log(resp.data);
+                resolve(resp.data)})
+              .catch(resp => reject(resp));
+      })
+    }
+
+    tttGetOpponentMove(board){
+      return new Promise((resolve, reject) => {
+          return axios.post(
+            this.URL + '/tttGetOpponentMove/', board
         )
               .then(resp => {
                 // console.log(resp.data);

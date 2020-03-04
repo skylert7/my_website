@@ -16,7 +16,7 @@ export default class TicTacToe extends React.Component {
   this.toggle = this.toggle.bind(this);
   this.AIvsAI = this.AIvsAI.bind(this);
   this.onClick = this.onClick.bind(this);
-
+  this.resetBoard = this.resetBoard.bind(this);
 }
 
   toggle = e => {
@@ -24,7 +24,8 @@ export default class TicTacToe extends React.Component {
   }
 
   resetBoard = e => {
-
+    let initialBoard = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+    this.setState({board: initialBoard});
   }
 
   switchPosition = e => {
@@ -49,19 +50,26 @@ export default class TicTacToe extends React.Component {
 
   onClick = async e => {
     let move = e.target.id
-    alert("Wrong move, please choose again.")
+    if (this.state.board[move] === 0){
+      await this.routeToBackend.tttSendMove(this.state.board, move).then(res => {
+         this.setState({board: res.board});
+      }).catch(res => {
+         alert("Error in sending move")
+      })
+      await setTimeout(function () {
+         this.routeToBackend.tttGetOpponentMove(this.state.board).then(res => {
+           alert("Waiting for opponent move... ")
+           this.setState({board: res.board});
 
-    // if (this.state.board[move] == 0){
-    //   await this.routeToBackend.sendMove(this.state.board, move).then(res => {
-    //      result = res.data
-    //      this.setState({result.board});
-    //   }).catch(res => {
-    //      alert("Error in sending move")
-    //   })
-    // }
-    // else {
-    //   alert("Wrong move, please choose again.")
-    // }
+        }).catch(res => {
+          alert("Error in getting opponent move")
+        })
+      }, 1000);
+
+    }
+    else{
+      alert("Wrong move, please choose again.")
+    }
 
   }
 
@@ -109,7 +117,7 @@ export default class TicTacToe extends React.Component {
           <div className="board-button-secondary">
           <button type="button" className="btn btn-secondary">Undo</button>
           <button type="button" className="btn btn-secondary">Switch Position</button>
-          <button type="button" className="btn btn-secondary">Reset Board</button>
+          <button type="button" className="btn btn-secondary" onClick={this.resetBoard}>Reset Board</button>
 
           </div>
 
