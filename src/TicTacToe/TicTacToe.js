@@ -1,17 +1,22 @@
 // Import ReactDOM and React
 import React from 'react';
 import './TicTacToe.css';
+import RouteToBackend from '../api/RouteToBackend'
+
 export default class TicTacToe extends React.Component {
+  routeToBackend = new RouteToBackend();
   constructor(props){
   super(props);
 
   this.state = {
     PvP: true,
-    board: []
+    board: [0, 0, 0, 0, 0, 0, 0, 0, 0],
   }
 
   this.toggle = this.toggle.bind(this);
   this.AIvsAI = this.AIvsAI.bind(this);
+  this.onClick = this.onClick.bind(this);
+
 }
 
   toggle = e => {
@@ -19,6 +24,14 @@ export default class TicTacToe extends React.Component {
   }
 
   resetBoard = e => {
+
+  }
+
+  switchPosition = e => {
+
+  }
+
+  undoAction = e => {
 
   }
 
@@ -31,6 +44,24 @@ export default class TicTacToe extends React.Component {
   }
 
   updateBoard = e => {
+
+  }
+
+  onClick = async e => {
+    let move = e.target.id
+    alert("Wrong move, please choose again.")
+
+    // if (this.state.board[move] == 0){
+    //   await this.routeToBackend.sendMove(this.state.board, move).then(res => {
+    //      result = res.data
+    //      this.setState({result.board});
+    //   }).catch(res => {
+    //      alert("Error in sending move")
+    //   })
+    // }
+    // else {
+    //   alert("Wrong move, please choose again.")
+    // }
 
   }
 
@@ -51,13 +82,16 @@ export default class TicTacToe extends React.Component {
 
           <div className="tttBoard">
           {
-            function() {
-              let boxes = [];
-              for (var i = 0; i < 9; i++) {
-                boxes.push(<div className="box-tttBoard"><p id={i+1}></p></div>)
-              }
-              return boxes;
-            }()
+          this.state.board.map((value, index) => {
+            let stringFromCode = ""
+            if(value == -1){
+              stringFromCode = "O"
+            }
+            else if (value == 1) {
+              stringFromCode = "X"
+            }
+              return (<div onClick={this.onClick}  key={index} id={index} className="box-tttBoard" ><p>{stringFromCode}</p></div>)
+            })
           }
           </div>
 
