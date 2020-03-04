@@ -135,7 +135,7 @@ async function nextMoveFromOpponent(board){
   //Change to "python3" from "python" to run on Linux
 	let child_process = require("child_process")
 	let returnBoard = []
-  await child_process.exec(`python ./minimax1.py "${board}"`,
+  await child_process.exec(`python3 ./minimax1.py "${board}"`,
                           function (error, stdout, stderr) {
 
 			// console.log('stdout: ' + stdout);
