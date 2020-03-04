@@ -11,6 +11,7 @@ export default class TicTacToe extends React.Component {
   this.state = {
     PvP: true,
     board: [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    playerTurn: true
   }
 
   this.toggle = this.toggle.bind(this);
@@ -24,6 +25,7 @@ export default class TicTacToe extends React.Component {
   }
 
   resetBoard = e => {
+    this.setState({playerTurn: true})
     let initialBoard = [0, 0, 0, 0, 0, 0, 0, 0, 0]
     this.setState({board: initialBoard});
   }
@@ -44,28 +46,33 @@ export default class TicTacToe extends React.Component {
     this.setState({PvP: !this.state.PvP})
   }
 
-  updateBoard = e => {
-
+  updateBoard = async e => {
+    await this.routeToBackend.tttGetOpponentMove(this.state.board).then(res => {
+         this.setState({board: res.board});
+         this.setState({playerTurn: true})
+      }).catch(res => {
+        alert("Error in getting opponent move")
+      })
   }
 
   onClick = async e => {
     let move = e.target.id
+    if(!this.state.playerTurn){
+      return
+    }
+
     if (this.state.board[move] === 0){
       await this.routeToBackend.tttSendMove(this.state.board, move).then(res => {
          this.setState({board: res.board});
+
       }).catch(res => {
          alert("Error in sending move")
       })
-      await setTimeout(function () {
-         this.routeToBackend.tttGetOpponentMove(this.state.board).then(res => {
-           alert("Waiting for opponent move... ")
-           this.setState({board: res.board});
 
-        }).catch(res => {
-          alert("Error in getting opponent move")
-        })
-      }, 1000);
+    //Set playerTurn to false
+    this.setState({playerTurn: false})
 
+     await this.updateBoard()
     }
     else{
       alert("Wrong move, please choose again.")

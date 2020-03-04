@@ -78,6 +78,7 @@ app.post('/sendEmail', (req, res) => {
 });
 
 //-------------------------- TicTacToe --------------------------
+// Receives move from frontend
 app.post('/tttSendMove', (req, res) => {
 	let board = req.body.board
 	let move = req.body.move
@@ -85,6 +86,27 @@ app.post('/tttSendMove', (req, res) => {
 	let toReturn = {board: board}
 	res.send(toReturn)
 })
+
+// Sends opponent move to frontend
+app.post('/tttGetOpponentMove', (req, res) => {
+	let board = req.body.board
+	nextMoveFromOpponent(board)
+	let toReturn = {board: ""}
+
+	setTimeout(function () {
+		fs.readFile('./movesMade.txt', "utf8", (err, data) => {
+						if (err) throw err;
+						let aBoard = data.split(',');
+						for (var i = 0; i < aBoard.length; i++) {
+							aBoard[i] = parseInt(aBoard[i])
+						}
+						toReturn.board = aBoard
+						res.send(toReturn)
+					});
+	}, 1000);
+
+})
+
 
 //---------------------------------------------------------------------------------
 https.createServer({
@@ -101,3 +123,30 @@ https.createServer({
 // 		console.log('Server running on port ', config.port)
 // 	}
 // });
+
+
+
+
+
+
+
+////--------------------------------------------------------------------------------- Normal functions
+async function nextMoveFromOpponent(board){
+  //Change to "python3" from "python" to run on Linux
+	let child_process = require("child_process")
+	let returnBoard = []
+  await child_process.exec(`python ./minimax1.py "${board}"`,
+                          function (error, stdout, stderr) {
+
+			// console.log('stdout: ' + stdout);
+      console.log('stderr: ' + stderr);
+      if (error !== null) {
+          console.log('exec error: ' + error);
+      }
+
+		});
+
+
+
+  return
+}

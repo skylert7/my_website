@@ -30,12 +30,13 @@ class RouteToBackend {
     }
 
     tttGetOpponentMove(board){
+      let boardToSend = {board: board}
       return new Promise((resolve, reject) => {
           return axios.post(
-            this.URL + '/tttGetOpponentMove/', board
+            this.URL + '/tttGetOpponentMove/', boardToSend
         )
               .then(resp => {
-                // console.log(resp.data);
+                console.log(resp.data);
                 resolve(resp.data)})
               .catch(resp => reject(resp));
       })
