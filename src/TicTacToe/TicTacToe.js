@@ -6,60 +6,80 @@ export default class TicTacToe extends React.Component {
   super(props);
 
   this.state = {
-
+    PvP: true,
+    board: []
   }
+
   this.toggle = this.toggle.bind(this);
+  this.AIvsAI = this.AIvsAI.bind(this);
 }
 
   toggle = e => {
-    console.log(e.target.value)
-    console.log(e.target.id)
-    console.log(e.target)
 
+  }
+
+  resetBoard = e => {
+
+  }
+
+  AIvsAI = e => {
+    this.setState({PvP: !this.state.PvP})
+  }
+
+  PvE = e => {
+    this.setState({PvP: !this.state.PvP})
+  }
+
+  updateBoard = e => {
+
+  }
+
+  start = e => {
+
+  }
+
+  componentDidMount(){
   }
 
   render() {
     return(
       <div>
         <div className="body">
-        <h1>This is TicTacToe Page</h1>
+
         <div className="tictactoe">
-          <span className="whiteChar">X</span>
-          <span className="whiteChar">O</span>
-        </div>
-          <h3 className="tttBoardTitle">Board placeholder</h3>
-          <table className="tttBoard">
-          <tbody>
-          <tr>
-            <td
-            id="1"
-            onClick={this.toggle}
-            value="20"
-            >O</td>
-            <td>2</td>
-            <td>3</td>
+        <h1>Tic Tac Toe with Alpha-Beta</h1>
 
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
-
-          </tr>
-          <tr>
-            <td>7</td>
-            <td>8</td>
-            <td>9</td>
-          </tr>
-          </tbody>
-          </table>
+          <div className="tttBoard">
+          {
+            function() {
+              let boxes = [];
+              for (var i = 0; i < 9; i++) {
+                boxes.push(<div className="box-tttBoard"><p id={i+1}></p></div>)
+              }
+              return boxes;
+            }()
+          }
+          </div>
 
           <div className="board-button">
           <button type="button" className="btn btn-success">Start</button>
-          <button type="button" className="btn btn-warning">Reset Board</button>
+
+          { this.state.PvP ? (
+            <button type="button" className="btn btn-warning" onClick={this.AIvsAI}>Switch to AI vs AI</button>
+          ) : (
+            <button type="button" className="btn btn-warning" onClick={this.PvE}>Switch to Player vs AI</button>
+          )}
+
           </div>
 
+          <div className="board-button-secondary">
+          <button type="button" className="btn btn-secondary">Undo</button>
+          <button type="button" className="btn btn-secondary">Switch Position</button>
+          <button type="button" className="btn btn-secondary">Reset Board</button>
 
+          </div>
+
+        </div>
         </div>
       </div>
     );

@@ -1,37 +1,71 @@
-.whiteChar {
-  color: red;
-}
-
-table.tttBoard{
-  width: calc(60vh);
-  height: calc(60vh);
-  background-color: grey;
-  margin-left: auto;
-  border-collapse: collapse;
-  border: 0.5vh solid black;
-  /* display: grid;
-  grid-template-columns: 20px 120px 120px 120px 120px 20px;
-  grid-template-rows: 20px 120px 120px 120px 120px 20px;
-  justify-content: center; */
-}
-
-table.tttBoard > tbody > tr > td{
+.tictactoe{
+  max-width: calc(60vh);
+  max-height: calc(60vh);
+  margin-left: 30vh;
+  justify-content: center;
   text-align: center;
-  border: 0.5vh solid black;
+  display: flex;
+  flex-wrap: wrap;
+}
+.tictactoe > h1 {
+  color: green;
+}
+.tttBoard {
+  border-bottom: 0.5vh solid black;
+  display: inherit;
+  flex-wrap: inherit;
+}
+
+
+.box-tttBoard {
+  width: calc(60vh/3);
+  height: calc(60vh/3);
+  line-height: calc(15vh/3);
+  background-color: white;
+  justify-content: center;
+  text-align: center;
+  display: flex;
+}
+
+.box-tttBoard  > p {
+  font-size: 6em;
+  margin: auto;
+  text-align: center;
+}
+
+.box-tttBoard:nth-child(n){/*1 2 3 4 5 6*/
+  border-top: 0.5vh solid black;
+}
+
+
+.box-tttBoard:nth-child(3n-2){/*1 4 7*/
+  border-right: 0.5vh solid black;
+  border-left: 0.5vh solid black;
+}
+
+.box-tttBoard:nth-child(3n-2){/*1 4 7*/
+  border-right: 0.5vh solid black;
+  border-left: 0.5vh solid black;
+}
+
+.box-tttBoard:nth-child(3n){ /*3 6 9*/
+  border-right: 0.5vh solid black;
+  border-left: 0.5vh solid black;
+}
+
+.box-tttBoard:hover{
+  background-color: grey;
+  cursor: pointer;
 }
 
 .tttBoardTitle{
-  width: calc(60vh);
-  margin-left: auto;
   align-self: center;
 }
 
 .board-button{
   margin-top: 1em;
-  margin-left: calc(60vh); /*Stay in the middle of the board*/
+  /*Stay in the middle of the board*/
 }
 
-.box {
-  background-color: #d9d9d9;
-  border: 2px solid black;
+.board-button-secondary{
 }

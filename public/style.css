@@ -304,8 +304,7 @@ label.label-block {
   background-color: #4b4f4b;
 }
 
-.footer h4,
-h5 {
+.footer h4, h5, h6 {
   font-size: 12px;
   color: white;
   text-align: center;

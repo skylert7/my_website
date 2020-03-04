@@ -24,7 +24,7 @@ class App extends React.Component {
           <Route exact path="/tictactoe" exact component={TicTacToe}/>
         </Switch>
         <footer className="footer">
-          <h5>Created by Skyler Tran. Powered by Plunker v1.23.1</h5>
+          <h6>Created by Skyler Tran. Powered by Plunker v1.23.1</h6>
         </footer>
       </Router>
 
