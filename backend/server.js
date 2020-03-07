@@ -100,10 +100,13 @@ app.post('/tttGetWinner', (req, res) => {
 	winner = tttGetWinner(board)
 	let toReturn = {winner: winner}  //1 is X, -1 is O, "None" is TIE
 
-	if (winner == -1 || winner == 1 || winner == "None")
+	if (winner == -1 || winner == 1 || winner == "None"){
 		res.send(toReturn)
 
-	res.send("Moveable")
+	}
+	else{
+		res.send("Moveable")
+	}
 
 })
 
