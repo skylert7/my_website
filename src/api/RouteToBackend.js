@@ -16,6 +16,7 @@ class RouteToBackend {
         })
     }
 
+/*---- TicTacToe ----*/
     tttSendMove(board, move){
       let boardAndMove = {board: board, move: move}
       return new Promise((resolve, reject) => {
@@ -36,11 +37,25 @@ class RouteToBackend {
             this.URL + '/tttGetOpponentMove/', boardToSend
         )
               .then(resp => {
-                console.log(resp.data);
+                // console.log(resp.data);
                 resolve(resp.data)})
               .catch(resp => reject(resp));
       })
     }
+
+    tttGetWinner(board){
+      let boardToSend = {board: board}
+      return new Promise((resolve, reject) => {
+          return axios.post(
+            this.URL + '/tttGetWinner/', boardToSend
+        )
+              .then(resp => {
+                // console.log(resp.data);
+                resolve(resp.data)})
+              .catch(resp => reject(resp));
+      })
+    }
+/*---- TicTacToe ----*/
 
 }
 
