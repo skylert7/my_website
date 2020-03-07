@@ -46,19 +46,7 @@ app.post('/sendEmail', (req, res) => {
 	        user: 'skyler.linhtran@gmail.com',
 	        pass: 'skyler1996'
 	    }
-			// auth: {
-			// 	user: 'electionbuddy.fa2019@gmail.com',
-			// 	pass: 'electionbuddy2019'
-			// }
 	});
-
-
-  // var mailOptions = {
-  //   from: `${JSON.stringify(req.body.sender)} <electionbuddy.fa2019@gmail.com>`,
-  //   to: 'mfonten@lyle.smu.edu',
-  //   subject: `${JSON.stringify(req.body.sender)} + from Election Buddy Sent You A Messsage`,
-  //   text: JSON.stringify(req.body.content)
-  // };
 
 	var mailOptions = {
 	  from: '"Skyler Tran" <skyler.linhtran@gmail.com>',
@@ -107,6 +95,18 @@ app.post('/tttGetOpponentMove', (req, res) => {
 
 })
 
+app.post('/tttGetWinner', (req, res) => {
+	let board = req.body.board
+	winner = tttGetWinner(board)
+	let toReturn = {winner: winner}  //1 is X, -1 is O, "None" is TIE
+
+	if (winner == -1 || winner == 1 || winner == "None")
+		res.send(toReturn)
+
+	res.send("Moveable")
+
+})
+
 
 //---------------------------------------------------------------------------------
 https.createServer({
@@ -138,7 +138,7 @@ async function nextMoveFromOpponent(board){
   await child_process.exec(`python3 ./minimax1.py "${board}"`,
                           function (error, stdout, stderr) {
 
-			// console.log('stdout: ' + stdout);
+			console.log('stdout: ' + stdout);
       console.log('stderr: ' + stderr);
       if (error !== null) {
           console.log('exec error: ' + error);
@@ -146,7 +146,96 @@ async function nextMoveFromOpponent(board){
 
 		});
 
-
-
   return
+}
+
+function tttGetWinner(b){
+	    // param board:
+	    // return: 1 or -1 or None :if no winner
+			console.log(Object.values(b))
+	    //------------------- X -------------------
+	    //Horizontal
+	    if (b[0] == b[1] && b[0] == b[2] && b[1] == b[2]){
+				if (b[0] == -1)
+					return b[0]
+			}
+	    if (b[3] == b[4] && b[3] == b[5] && b[4] == b[5]){
+				if (b[3] == -1)
+					return b[3]
+			}
+	    if (b[6] == b[7] && b[6] == b[8] && b[7] == b[8]){
+				if (b[6] == -1)
+					return b[6]
+			}
+
+	    //Diagonal
+	    if (b[0] == b[0 + 4] && b[0] == b[0 + 8] && b[0 + 4] == b[0 + 8]){
+				if (b[0] == -1)
+					return b[0]
+			}
+	    if (b[2] == b[2 + 2] && b[2 + 2] == b[2 + 4] && b[2] == b[2 + 4]){
+				if (b[2] == -1)
+					return b[2]
+			}
+
+	    //Vertical
+	    if (b[0] == b[0 + 3] && b[0] == b[0 + 6] && b[0 + 3]== b[0 + 6]){
+				if (b[0] == -1)
+					return b[0]
+			}
+	    if (b[1] == b[1 + 3] && b[1 + 3] == b[1 + 6] && b[1] == b[1 + 6]){
+				if (b[1] == -1)
+					return b[1]
+			}
+	    if (b[2] == b[2 + 3] && b[2] == b[2 + 6] && b[2 + 3] == b[2 + 6]){
+				if (b[2] == -1)
+					return b[2]
+			}
+
+	    // ------------------- O -------------------
+	    // Horizontal
+			if (b[0] == b[1] && b[0] == b[2] && b[1] == b[2]){
+				if (b[0] == 1)
+					return b[0]
+			}
+	    if (b[3] == b[4] && b[3] == b[5] && b[4] == b[5]){
+				if (b[3] == 1)
+					return b[3]
+			}
+	    if (b[6] == b[7] && b[6] == b[8] && b[7] == b[8]){
+				if (b[6] == 1)
+					return b[6]
+			}
+
+	    //Diagonal
+	    if (b[0] == b[0 + 4] && b[0] == b[0 + 8] && b[0 + 4] == b[0 + 8]){
+				if (b[0] == 1)
+					return b[0]
+			}
+	    if (b[2] == b[2 + 2] && b[2 + 2] == b[2 + 4] && b[2] == b[2 + 4]){
+				if (b[2] == 1)
+					return b[2]
+			}
+
+	    //Vertical
+	    if (b[0] == b[0 + 3] && b[0] == b[0 + 6] && b[0 + 3]== b[0 + 6]){
+				if (b[0] == 1)
+					return b[0]
+			}
+	    if (b[1] == b[1 + 3] && b[1 + 3] == b[1 + 6] && b[1] == b[1 + 6]){
+				if (b[1] == 1)
+					return b[1]
+			}
+	    if (b[2] == b[2 + 3] && b[2] == b[2 + 6] && b[2 + 3] == b[2 + 6]){
+				if (b[2] == 1)
+					return b[2]
+			}
+
+	    //------------------- Tie -------------------
+			var b_string = JSON.stringify(b)
+	    if (!b_string.includes("0")){
+				console.log(b_string.includes("0"))
+				return "None"
+			}
+
 }
