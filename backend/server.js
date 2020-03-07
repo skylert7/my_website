@@ -135,16 +135,31 @@ async function nextMoveFromOpponent(board){
   //Change to "python3" from "python" to run on Linux
 	let child_process = require("child_process")
 	let returnBoard = []
-  await child_process.exec(`python3 ./minimax1.py "${board}"`,
-                          function (error, stdout, stderr) {
+	try {
+		await child_process.exec(`python ./minimax1.py "${board}"`,
+	                          function (error, stdout, stderr) {
 
-			console.log('stdout: ' + stdout);
-      console.log('stderr: ' + stderr);
-      if (error !== null) {
-          console.log('exec error: ' + error);
-      }
+				console.log('stdout: ' + stdout);
+	      console.log('stderr: ' + stderr);
+	      if (error !== null) {
+	          console.log('exec error: ' + error);
+	      }
 
-		});
+			});
+	}
+	catch(err) {
+		await child_process.exec(`python3 ./minimax1.py "${board}"`,
+	                          function (error, stdout, stderr) {
+
+				console.log('stdout: ' + stdout);
+	      console.log('stderr: ' + stderr);
+	      if (error !== null) {
+	          console.log('exec error: ' + error);
+	      }
+
+			});
+	}
+
 
   return
 }
