@@ -2,7 +2,7 @@
 import minimaxUtils as util
 import time
 import sys
-
+import random
 # TODO: Modify isEndNode(self) and  evaluate(self):
 counter_number_of_nodes_visited = 0
 # a utility function to convert an board array into a game string
@@ -20,7 +20,6 @@ def getNameForBoard(b):
 
 # Node for minimax tree
 class node():
-
     def __init__(self, board):
         self.board = board  # the list of 1,-1 and 0s
         self.children = []
@@ -51,28 +50,6 @@ class node():
         for b in childBoards:
             self.children.append(node(b) )
         return self.children
-
-
-def minimax(node, maximizingScore):
-    global counter_number_of_nodes_visited
-    counter_number_of_nodes_visited = counter_number_of_nodes_visited + 1
-    if node.isEndNode():
-        # expect 0, 1 or -1
-        value = node.evaluate()
-        node.score = value
-        return value
-
-    bestScore = -999 if maximizingScore else 999
-    for child in node.getChildren():
-        score = minimax(child, not maximizingScore)
-        if maximizingScore:
-            bestScore = max(score, bestScore)
-        else:
-            bestScore = min(score, bestScore)
-
-    # store score in node
-    node.score = bestScore
-    return bestScore
 
 def alphaBeta(node, alpha, beta, maximizingScore):
     global counter_number_of_nodes_visited
@@ -106,50 +83,6 @@ def alphaBeta(node, alpha, beta, maximizingScore):
     return bestScore
 
 if __name__ == "__main__":
-    # informal tests
-
-    # test WIN for X when X has the move
-    print ("Test for WIN X")
-    b = [1, 1, 1, 0, -1, 0, -1, 0, -1]
-    print (getNameForBoard(b))
-    root = node(b)
-    minimax(root, True)
-    print("root node value = ", root.score)
-
-
-    # test WIN for O when X has the move
-    print("\nTest for WIN O")
-    b = [1, 1, 0, 1, 0, 0, -1, -1, -1]
-    print (getNameForBoard(b))
-    root = node(b)
-    minimax(root, True)
-    # expect -1
-    print("root node value = ", root.score)
-
-    # test TIE
-    print("\nTest for TIE")
-    b = [1,-1, 1,  -1,-1,1,  1,1,-1]
-    print(getNameForBoard(b))
-    root = node(b)
-    minimax(root, True)
-    # expect 0
-    print("root node value = ", root.score)
-
-    # # Other tests ...
-    # print('---------------- Part B ---------------- ')
-    # counter_number_of_nodes_visited = 0
-    # b = [0, 0, 0, 0, 0, 0, 0, 0, 0]
-    # print(getNameForBoard(b))
-    # root = node(b)
-    # start = time.time()
-    # # top level call to minimax
-    # minimax(root, True)
-    # end = time.time()
-    # duration = end - start
-    # print("Nodes visited: ", counter_number_of_nodes_visited)
-    # print("root node value = ", root.score) # expect 0
-    # print("Time for minimax: {} seconds".format(duration))
-
     print('---------------- Part C ---------------- ')
     counter_number_of_nodes_visited = 0
     # b = [0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -158,7 +91,6 @@ if __name__ == "__main__":
     b = sys.argv[1]
     b = b.split(',')
     b = [int(i) for i in b]
-    # print(getNameForBoard(b))
 
     root = node(b)
     start = time.time()
@@ -166,7 +98,11 @@ if __name__ == "__main__":
     alphaBeta(root, -999, 999, True)
 
     f = open("movesMade.txt", "w")
-    f.write(','.join([str(elem) for elem in util.gen_next_moves_list(b)[0]]))
+    board_list = util.gen_next_moves_list(b)
+    if len(board_list) == 0:
+        pass
+    randomNum = random.randint(0, len(board_list) - 1)
+    f.write(','.join([str(elem) for elem in board_list[randomNum]]))
     f.close()
 
     # end = time.time()
