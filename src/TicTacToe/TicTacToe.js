@@ -11,7 +11,8 @@ export default class TicTacToe extends React.Component {
   this.state = {
     PvP: true,
     board: [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    playerTurn: true
+    playerTurn: true,
+    winnerFoundOrTie: false
   }
 
   this.toggle = this.toggle.bind(this);
@@ -28,6 +29,8 @@ export default class TicTacToe extends React.Component {
     this.setState({playerTurn: true})
     let initialBoard = [0, 0, 0, 0, 0, 0, 0, 0, 0]
     this.setState({board: initialBoard});
+    this.setState({winnerFoundOrTie: false});
+
   }
 
   switchPosition = e => {
@@ -46,10 +49,13 @@ export default class TicTacToe extends React.Component {
     this.setState({PvP: !this.state.PvP})
   }
 
-  updateBoard = async e => {
-    await this.routeToBackend.tttGetOpponentMove(this.state.board).then(res => {
+  updateBoard = e => {
+    this.routeToBackend.tttGetOpponentMove(this.state.board).then(res => {
          this.setState({board: res.board});
-         this.setState({playerTurn: true})
+         if (!this.state.winnerFoundOrTie){//If still moveable and no winner found
+           this.setState({playerTurn: true})
+           this.getWinner()
+         }
       }).catch(res => {
         alert("Error in getting opponent move")
       })
@@ -68,16 +74,44 @@ export default class TicTacToe extends React.Component {
       }).catch(res => {
          alert("Error in sending move")
       })
-
     //Set playerTurn to false
     this.setState({playerTurn: false})
 
-     await this.updateBoard()
+    //Check for winner
+    await this.getWinner()
+
+    if (!this.state.winnerFoundOrTie){//If still moveable and no winner found
+      await this.updateBoard()
+    }
+
     }
     else{
       alert("Wrong move, please choose again.")
     }
 
+  }
+
+  getWinner = async e => {
+      await this.routeToBackend.tttGetWinner(this.state.board).then(res => {
+        if(res.winner == "None"){
+          alert("Result: TIE")
+          this.setState({playerTurn: false})
+          this.setState({winnerFoundOrTie: true})
+        }
+       else if (res.winner == 1){
+         alert("You win! Congrats. But it's a tictactoe game, so you know what I mean :)")
+         this.setState({playerTurn: false})
+         this.setState({winnerFoundOrTie: true})
+
+       }
+       else if (res.winner == -1) {
+         alert("You lose. Better luck next time!")
+         this.setState({playerTurn: false})
+         this.setState({winnerFoundOrTie: true})
+       }
+     }).catch(err => {
+       alert("Error in getting winner")
+     })
   }
 
   start = e => {
