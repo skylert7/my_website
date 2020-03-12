@@ -46,19 +46,7 @@ app.post('/sendEmail', (req, res) => {
 	        user: 'skyler.linhtran@gmail.com',
 	        pass: 'skyler1996'
 	    }
-			// auth: {
-			// 	user: 'electionbuddy.fa2019@gmail.com',
-			// 	pass: 'electionbuddy2019'
-			// }
 	});
-
-
-  // var mailOptions = {
-  //   from: `${JSON.stringify(req.body.sender)} <electionbuddy.fa2019@gmail.com>`,
-  //   to: 'mfonten@lyle.smu.edu',
-  //   subject: `${JSON.stringify(req.body.sender)} + from Election Buddy Sent You A Messsage`,
-  //   text: JSON.stringify(req.body.content)
-  // };
 
 	var mailOptions = {
 	  from: '"Skyler Tran" <skyler.linhtran@gmail.com>',
@@ -130,7 +118,7 @@ https.createServer({
 
 
 
-////--------------------------------------------------------------------------------- Normal functions
+// -------------------- Normal functions --------------------
 async function nextMoveFromOpponent(board){
   //Change to "python3" from "python" to run on Linux
 	let child_process = require("child_process")
