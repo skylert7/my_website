@@ -133,7 +133,7 @@ https.createServer({
 
 
 
-////--------------------------------------------------------------------------------- Normal functions
+// -------------------- Normal functions --------------------
 async function nextMoveFromOpponent(board){
   //Change to "python3" from "python" to run on Linux
 	let child_process = require("child_process")
