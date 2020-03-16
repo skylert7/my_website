@@ -5,7 +5,9 @@ import Slither from './slither/Slither';
 import Sudoku from './sudoku/Sudoku';
 import Tetris from './tetris/Tetris';
 import TicTacToe from './TicTacToe/TicTacToe';
+import Gomoku from './Gomoku/Gomoku';
 import Navigation from './Navigation/Navigation';
+
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 // var faker = require('faker');
@@ -22,6 +24,8 @@ class App extends React.Component {
           <Route exact path="/sudoku" exact component={Sudoku}/>
           <Route exact path="/slither" exact component={Slither}/>
           <Route exact path="/tictactoe" exact component={TicTacToe}/>
+          <Route exact path="/gomoku" exact component={Gomoku}/>
+
         </Switch>
         <footer className="footer">
           <h6>Created by Skyler Tran @ Southern Methodist University, Dallas, Texas</h6>
