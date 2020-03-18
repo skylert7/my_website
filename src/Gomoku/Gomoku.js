@@ -121,7 +121,7 @@ getWinner = async e => {
 
         <div className="gomoku">
         <p>This page is under construction</p>
-        <h1>Gomoku with Alpha-Beta</h1
+        <h1>Gomoku with Alpha-Beta</h1>
           <div className="gmkBoard">
             <div className="gmkGrid">
             {
