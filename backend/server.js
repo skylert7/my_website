@@ -116,7 +116,14 @@ https.createServer({
 	key: fs.readFileSync('./ssl_for_my_website/private.key'),
 	cert: fs.readFileSync('./ssl_for_my_website/certificate.crt'),
 	ca: fs.readFileSync('./ssl_for_my_website/ca_bundle.crt')
-},app).listen(config.port, config.host);
+},app).listen(config.port, config.host, (e) => {
+	  if (e) {
+	    throw new Error('Internal Server Error');
+	  }
+		else{
+			console.log('Server running on https on port', config.port)
+		}
+});
 
 // app.listen(config.port, config.host, (e) => {
 //   if (e) {

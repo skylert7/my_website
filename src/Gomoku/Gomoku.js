@@ -2,7 +2,7 @@
 import React from 'react';
 import './Gomoku.css'
 import RouteToBackend from '../api/RouteToBackend'
-
+import { Fragment } from 'react';
 export default class Gomoku extends React.Component {
   routeToBackend = new RouteToBackend();
   constructor(props){
@@ -119,22 +119,27 @@ getWinner = async e => {
       <div>
         <div className="body">
 
-        <div className="tictactoe">
-        <h1>Tic Tac Toe with Alpha-Beta</h1>
+        <div className="gomoku">
+        <p>This page is under construction</p>
+        <h1>Gomoku with Alpha-Beta</h1>
 
-          <div className="tttBoard">
-          {
-          this.state.board.map((value, index) => {
-            let stringFromCode = ""
-            if(value == -1){
-              stringFromCode = "O"
+          <div className="gmkBoard">
+            <div className="gmkGrid">
+            {
+            this.state.board.map((value, index) => {
+              let stringFromCode = ""
+              if(value == -1){
+                return (<div onClick={this.onClick}  key={index} id={index} className="box-gmkBoard gmk-black" ><p>O</p></div>)
+              }
+              else if (value == 1) {
+                return (<div onClick={this.onClick}  key={index} id={index} className="box-gmkBoard gmk-white" ><p>X</p></div>)
+              }
+              else {
+                return (<div onClick={this.onClick}  key={index} id={index} className="box-gmkBoard" >{stringFromCode}</div>)
+              }
+              })
             }
-            else if (value == 1) {
-              stringFromCode = "X"
-            }
-              return (<div onClick={this.onClick}  key={index} id={index} className="box-tttBoard" ><p>{stringFromCode}</p></div>)
-            })
-          }
+            </div>
           </div>
 
           <div className="board-button">
@@ -146,13 +151,14 @@ getWinner = async e => {
             <button type="button" className="btn btn-warning" onClick={this.PvE}>Switch to Player vs AI</button>
           )}
 
-          </div>
-
           <div className="board-button-secondary">
           <button type="button" className="btn btn-secondary">Undo</button>
           <button type="button" className="btn btn-secondary" onClick={this.resetBoard}>Reset Board</button>
 
           </div>
+          </div>
+
+
 
         </div>
         </div>

@@ -1,7 +1,7 @@
 .gomoku {
-  margin-left: 25vw;
-  width: calc( (20vh + 20vw) ) ;
-  max-height: calc( (20vh + 20vw) * 2 );
+  margin-left: 15vw;
+  width: calc( (25vh + 25vw) ) ;
+  max-height: calc( (21vh + 21vw) * 2 );
   justify-content: center;
   text-align: center;
   display: flex;
@@ -11,51 +11,61 @@
 .gomoku > h1 {
   color: green;
 }
+
 .gmkBoard {
-  border-bottom: 0.5vw solid black;
+  background-color: #fbd681;
+  width: calc( (23vh + 23vw) ) ;
+  height: calc( (23vh + 23vw) );
+  margin-top: calc(1vh + 1vw);
+  padding-top: calc(2vh + 2vw);
+  display: inherit;
+  flex-wrap: inherit;
+  justify-content: center;
+
+}
+
+.gmkGrid{
+  width: calc( (19.1vh + 19.1vw) ) ;
+  height: calc( (19.1vh + 19.1vw) ) ;
+
+  border-top: calc(0.01vh + 0.01vw) solid black;
+  border-left: calc(0.01vh + 0.01vw) solid black;
   display: inherit;
   flex-wrap: inherit;
 }
 
 .box-gmkBoard {
-  width: calc( (20vh + 20vw)/19);
-  height: calc( (20vh + 20vw)/19);
-  line-height: calc( (20vh + 20vw)/19);
-  background-color: white;
+  width: calc( (19vh + 19vw)/19);
+  height: calc( (19vh + 19vw)/19);
+  line-height: calc( (19vh + 19vw)/19);
   justify-content: center;
   text-align: center;
   display: flex;
+  border-right: calc(0.01vh + 0.01vw) solid black;
+  border-bottom: calc(0.01vh + 0.01vw) solid black;
+
 }
 
 .box-gmkBoard  > p {
-  font-size: 6em;
+  font-size: calc(1vh + 1vw);
   margin: auto;
   text-align: center;
+  padding-top: calc(0.05vh + 0.05vw);
+  justify-content: center;
 }
 
-.box-gmkBoard:nth-child(n){/*1 2 3 4 5 6*/
-  border-top: 0.5vw solid black;
-}
-
-
-.box-gmkBoard:nth-child(3n-2){/*1 4 7*/
-  border-right: 0.5vw solid black;
-  border-left: 0.5vw solid black;
-}
-
-.box-gmkBoard:nth-child(3n-2){/*1 4 7*/
-  border-right: 0.5vw solid black;
-  border-left: 0.5vw solid black;
-}
-
-.box-gmkBoard:nth-child(3n){ /*3 6 9*/
-  border-right: 0.5vw solid black;
-  border-left: 0.5vw solid black;
-}
 
 .box-gmkBoard:hover{
-  background-color: grey;
+  background-color: white;
   cursor: pointer;
+}
+
+.gmk-white{
+  background-color: white;
+}
+
+.gmk-black{
+  background-color: grey;
 }
 
 .gmkBoardTitle{
@@ -64,6 +74,7 @@
 
 .board-button{
   margin-top: 1em;
+  max-width: calc( (19.1vh + 19.1vw) /2 );
   /*Stay in the middle of the board*/
 }
 
