@@ -50,44 +50,44 @@ PvE = e => {
 }
 
 updateBoard = e => {
-  this.routeToBackend.tttGetOpponentMove(this.state.board).then(res => {
-       this.setState({board: res.board});
-       if (!this.state.winnerFoundOrTie){//If still moveable and no winner found
-         this.setState({playerTurn: true})
-         this.getWinner()
-       }
-    }).catch(res => {
-      alert("Error in getting opponent move")
-    })
+  // this.routeToBackend.tttGetOpponentMove(this.state.board).then(res => {
+  //      this.setState({board: res.board});
+  //      if (!this.state.winnerFoundOrTie){//If still moveable and no winner found
+  //        this.setState({playerTurn: true})
+  //        this.getWinner()
+  //      }
+  //   }).catch(res => {
+  //     alert("Error in getting opponent move")
+  //   })
 }
 
 onClick = async e => {
-  let move = e.target.id
-  if(!this.state.playerTurn){
-    return
-  }
-
-  if (this.state.board[move] === 0){
-    await this.routeToBackend.tttSendMove(this.state.board, move).then(res => {
-       this.setState({board: res.board});
-
-    }).catch(res => {
-       alert("Error in sending move")
-    })
-  //Set playerTurn to false
-  this.setState({playerTurn: false})
-
-  //Check for winner
-  await this.getWinner()
-
-  if (!this.state.winnerFoundOrTie){//If still moveable and no winner found
-    await this.updateBoard()
-  }
-
-  }
-  else{
-    alert("Wrong move, please choose again.")
-  }
+  // let move = e.target.id
+  // if(!this.state.playerTurn){
+  //   return
+  // }
+  //
+  // if (this.state.board[move] === 0){
+  //   await this.routeToBackend.tttSendMove(this.state.board, move).then(res => {
+  //      this.setState({board: res.board});
+  //
+  //   }).catch(res => {
+  //      alert("Error in sending move")
+  //   })
+  // //Set playerTurn to false
+  // this.setState({playerTurn: false})
+  //
+  // //Check for winner
+  // await this.getWinner()
+  //
+  // if (!this.state.winnerFoundOrTie){//If still moveable and no winner found
+  //   await this.updateBoard()
+  // }
+  //
+  // }
+  // else{
+  //   alert("Wrong move, please choose again.")
+  // }
 
 }
 
@@ -121,8 +121,7 @@ getWinner = async e => {
 
         <div className="gomoku">
         <p>This page is under construction</p>
-        <h1>Gomoku with Alpha-Beta</h1>
-
+        <h1>Gomoku with Alpha-Beta</h1
           <div className="gmkBoard">
             <div className="gmkGrid">
             {
