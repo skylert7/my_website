@@ -25,7 +25,7 @@ class App extends React.Component {
           <Route exact path="/slither" exact component={Slither}/>
           <Route exact path="/tictactoe" exact component={TicTacToe}/>
           <Route exact path="/gomoku" exact component={Gomoku}/>
-
+          <Route exact path="/home" exact component={Home}/>
         </Switch>
         <footer className="footer">
           <h6>Created by Skyler Tran @ Southern Methodist University, Dallas, Texas</h6>
