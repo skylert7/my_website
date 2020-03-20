@@ -16,7 +16,7 @@ class RouteToBackend {
         })
     }
 
-/*---- TicTacToe ----*/
+/* ---- TicTacToe ---- */
     tttSendMove(board, move){
       let boardAndMove = {board: board, move: move}
       return new Promise((resolve, reject) => {
@@ -54,7 +54,13 @@ class RouteToBackend {
               .catch(resp => reject(resp));
       })
     }
-/*---- TicTacToe ----*/
+/* ---- TicTacToe ---- */
+
+/* ---- Gomoku ---- */
+
+/* ---- Gomoku ---- */
+
+
 
 }
 
