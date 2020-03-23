@@ -111,6 +111,52 @@ app.post('/tttGetWinner', (req, res) => {
 })
 
 
+// -------------------------- Gomoku --------------------------
+// Receives move from frontend
+app.post('/gmkSendMove', (req, res) => {
+	let board = req.body.board
+	let move = req.body.move
+	board[move] = 1
+	let toReturn = {board: board}
+	res.send(toReturn)
+})
+
+// Sends opponent move to frontend
+app.post('/gmkGetOpponentMove', (req, res) => {
+	let board = req.body.board
+	nextMoveFromOpponent(board)
+	let toReturn = {board: ""}
+
+	setTimeout(function () {
+		fs.readFile('./movesMade.txt', "utf8", (err, data) => {
+						if (err) throw err;
+						let aBoard = data.split(',');
+						for (var i = 0; i < aBoard.length; i++) {
+							aBoard[i] = parseInt(aBoard[i])
+						}
+						toReturn.board = aBoard
+						res.send(toReturn)
+					});
+	}, 1000);
+
+})
+
+app.post('/gmkGetWinner', (req, res) => {
+	let board = req.body.board
+	winner = tttGetWinner(board)
+	let toReturn = {winner: winner}  //1 is X, -1 is O, "None" is TIE
+
+	if (winner == -1 || winner == 1 || winner == "None"){
+		res.send(toReturn)
+
+	}
+	else{
+		res.send("Moveable")
+	}
+
+})
+
+
 //---------------------------------------------------------------------------------
 https.createServer({
 	key: fs.readFileSync('./ssl_for_my_website/private.key'),
