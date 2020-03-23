@@ -16,7 +16,7 @@ class RouteToBackend {
         })
     }
 
-/* ---- TicTacToe ---- */
+/* ---- Start TicTacToe ---- */
     tttSendMove(board, move){
       let boardAndMove = {board: board, move: move}
       return new Promise((resolve, reject) => {
@@ -54,11 +54,48 @@ class RouteToBackend {
               .catch(resp => reject(resp));
       })
     }
-/* ---- TicTacToe ---- */
+/* ---- End TicTacToe ---- */
 
-/* ---- Gomoku ---- */
+/* ---- Start Gomoku ---- */
 
-/* ---- Gomoku ---- */
+    gmkSendMove(board, move){
+      let boardAndMove = {board: board, move: move}
+      return new Promise((resolve, reject) => {
+          return axios.post(
+            this.URL + '/gmkSendMove/', boardAndMove
+        )
+              .then(resp => {
+                // console.log(resp.data);
+                resolve(resp.data)})
+              .catch(resp => reject(resp));
+      })
+    }
+    gmkGetOpponentMove(board){
+      let boardToSend = {board: board}
+      return new Promise((resolve, reject) => {
+          return axios.post(
+            this.URL + '/gmkGetOpponentMove/', boardToSend
+        )
+              .then(resp => {
+                // console.log(resp.data);
+                resolve(resp.data)})
+              .catch(resp => reject(resp));
+      })
+    }
+
+    gmkGetWinner(board){
+      let boardToSend = {board: board}
+      return new Promise((resolve, reject) => {
+          return axios.post(
+            this.URL + '/gmkGetWinner/', boardToSend
+        )
+              .then(resp => {
+                // console.log(resp.data);
+                resolve(resp.data)})
+              .catch(resp => reject(resp));
+      })
+    }
+/* ---- End Gomoku ---- */
 
 
 
