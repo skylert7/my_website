@@ -138,7 +138,6 @@ app.post('/gmkGetOpponentMove', (req, res) => {
 						res.send(toReturn)
 					});
 	}, 1000);
-
 })
 
 app.post('/gmkGetWinner', (req, res) => {
